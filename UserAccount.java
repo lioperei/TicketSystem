@@ -1,10 +1,13 @@
 import java.io.*;
 import java.util.ArrayList;
 
+/*
+  Responsible for interactions with the useraccounts file
+ */
 public class UserAccount {
-  private static String userAccountsFile = "user_account.txt";
-  private static String transactionsFile = "daily_transaction.txt";
+  // List of users that will be read from the user account file on every login
   private static ArrayList<User> users = new ArrayList<>();
+  private static String userAccountsFile = "user_account.txt";
 
   public static User login(String username) {
 
@@ -14,13 +17,18 @@ public class UserAccount {
       br = new BufferedReader(new InputStreamReader(new FileInputStream(userAccountsFile)));
       String user;
       String[] userLines;
-      
-      while ((user = br.readLine()) != null) {
+      User u;
+      while (!(user = br.readLine()).equals("END")) {
         userLines = user.split(" ");
-        User u = new User(userLines[0], userLines[1], Double.parseDouble(userLines[2]));
-        if (u.getUsername().equals(username)) {
-          found = u;
+        switch (userLines[1]) {
+        case "AA":
+          u = new Admin(userLines[0], Double.parseDouble(userLines[2]));
+          break;
+        default:
+          u = new User(userLines[0], userLines[1], Double.parseDouble(userLines[2]));
+          break;
         }
+        found = (u.getUsername().equals(username)) ? u : found;
         users.add(u);
       }
       br.close();
@@ -28,21 +36,26 @@ public class UserAccount {
       System.out.println("Login Error. Try again");
       return null;
     }
-    
+
     return (found != null) ? found : null;
   }
 
   public static User logout(User user) {
     PrintWriter out;
     try {
-      out = new PrintWriter(new BufferedWriter(new FileWriter(transactionsFile, true)));
+      out = new PrintWriter(new BufferedWriter(new FileWriter(userAccountsFile, false)));
+      TransactionFile.logout(user);
     } catch (IOException e) {
       System.out.println("Error logging out");
       return user;
     }
-    out.println(user.endSession());
-    out.close();
+    for (User u : users) {
+      out.println(u.getUserAccount());
+    }
+    out.println("END");
     System.out.println("Logged out");
+    users = new ArrayList<>();
+    out.close();
     return null;
   }
 

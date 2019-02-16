@@ -1,1 +1,2 @@
-admin AA 100
+admin           AA 000000100.00
+END

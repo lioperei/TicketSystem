@@ -1,4 +1,4 @@
-public class User {
+public class User{
   private String username;
   private double credit;
   private String userType;
@@ -23,6 +23,10 @@ public class User {
 
   public String endSession() {
     return String.format("00 %1$-15s %2$s %3$012.2f", this.username, this.userType, this.credit);
+  }
+
+  public String getUserAccount(){
+    return String.format("%1$-15s %2$s %3$012.2f", this.username, this.userType, this.credit);
   }
 
 }
