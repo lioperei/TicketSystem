@@ -27,18 +27,23 @@ public class BankingSystem {
     }
   }
   
-  public static void create(String desiredUsername, String desiredUserType) {
-	 try {
-		 FileWriter fr = new FileWriter(userAccountsFile, true);
-		 BufferedWriter br = new BufferedWriter(fr);
-		 PrintWriter pr = new PrintWriter(br);
-		 pr.println(String.format("%-15s", desiredUsername) +" "+ desiredUserType +" 000000000.00");
-		 pr.close();
-	} catch (IOException e) {
-		System.out.println("Error creating account");
-	}
-	
-}
+  private static void create() {
+    String desiredUserType;
+    String desiredUsername;
+	  
+    if (user == null) {
+      System.out.println("Enter Desired username (less than 16 characters) ");
+      desiredUsername = in.nextLine().toLowerCase();
+	   if (desiredUsername.length() > 15) 
+		   System.out.println("Error: must be less than 16 characters");
+	      else
+	      	System.out.println("Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard");
+	      	desiredUserType = in.nextLine().toLowerCase();
+	      	UserAccount.create(desiredUsername, desiredUserType);
+	    } else {
+	      System.out.println("Invalid");
+	    }
+	  }
 
   public static void main(String args[]) {
     in = new Scanner(System.in);
