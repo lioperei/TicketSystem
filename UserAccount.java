@@ -58,5 +58,19 @@ public class UserAccount {
     out.close();
     return null;
   }
+  
+  public static void create(String desiredUsername, String desiredUserType) {
+	 try {
+		 FileWriter fr = new FileWriter(userAccountsFile, true);
+		 BufferedWriter br = new BufferedWriter(fr);
+		 PrintWriter pr = new PrintWriter(br);
+		 pr.println(String.format("%-15s", desiredUsername) + " " + desiredUserType + " 000000000.00");
+		 pr.close();
+	} catch (IOException e) {
+		System.out.println("Error creating account");
+	}
+	
+}
+
 
 }
