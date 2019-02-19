@@ -57,6 +57,9 @@ public class BankingSystem {
       case "logout":
         logout();
         break;
+      case "create":      
+        create();
+        break;	      
       default:
         System.out.println("Invalid Command");
         break;
