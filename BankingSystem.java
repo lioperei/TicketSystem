@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class BankingSystem {
-  private static User user = null;
+  private static User user;
   private static String inputMessage;
   private static Scanner in;
 
@@ -10,7 +10,7 @@ public class BankingSystem {
       System.out.println("Enter username");
       user = UserAccount.login(in.nextLine().toLowerCase());
       if (user != null)
-        inputMessage = "Enter Command\n";
+        inputMessage = user.getCommands();
       else
         System.out.println("Invalid user");
     } else {
