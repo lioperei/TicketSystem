@@ -1,14 +1,19 @@
 import java.util.ArrayList;
 
 public class User implements Commands {
+  private final double MAX = 999999;
+  private final double SESSION_MAX = 1000;
+
   private String username;
   private double credit;
   private String userType;
+  private double sessionAmount;
 
   public User(String username, String usertype, double credit) {
     this.username = username;
     this.userType = usertype;
     this.credit = credit;
+    this.sessionAmount = 0;
   }
 
   public String getUsername() {
@@ -32,15 +37,13 @@ public class User implements Commands {
   }
 
   @Override
-  public ArrayList<User> create(ArrayList<User> users) {
-    System.out.println("Invalid command");
-    return users;
+  public boolean create() {
+    return false;
   }
 
   @Override
-  public ArrayList<User> delete(ArrayList<User> users) {
-    System.out.println("Invalid command");
-    return users;
+  public boolean delete() {
+    return false;
   }
 
   @Override
@@ -50,15 +53,8 @@ public class User implements Commands {
   }
 
   @Override
-  public ArrayList<User> refund(ArrayList<User> users) {
-    System.out.println("Invalid command");
-    return users;
-  }
-
-  @Override
-  public ArrayList<User> addCredit(ArrayList<User> users) {
-    System.out.println("Invalid command");
-    return users;
+  public boolean refund() {
+    return false;
   }
 
   @Override
@@ -66,4 +62,32 @@ public class User implements Commands {
     return "Enter Command:\n  But they isn't any";
   }
 
+  public boolean addCredit(double amount, boolean refund) {
+    if ((this.credit + amount) < MAX) {
+      if (refund) {
+        this.credit += amount;
+      } else if ((this.sessionAmount + amount) < SESSION_MAX) {
+        this.credit += amount;
+        this.sessionAmount += amount;
+      }
+      TransactionFile.userTransactionLine("06", this.username, this.userType, amount);
+      return true;
+    } else {
+      System.out.println("Amount exceeds limit");
+      return false;
+    }
+  }
+
+  public boolean deductCredit(double amount) {
+    if ((this.credit - amount) < 0) {
+      this.credit -= amount;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public String toString() {
+    return this.username + " " + this.userType;
+  }
 }

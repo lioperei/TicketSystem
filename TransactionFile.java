@@ -9,6 +9,10 @@ public class TransactionFile{
   public static void addTransaction(String line){
     transactionLines.add(line);
   }
+
+  public static void userTransactionLine(String code, String username, String userType, double amount){
+    transactionLines.add(code + String.format(" %1$-15s %2$s %3$012.2f", username, userType, amount));
+  }
   
   public static User logout(User user) {
     PrintWriter out;
