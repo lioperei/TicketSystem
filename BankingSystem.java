@@ -119,7 +119,7 @@ public class BankingSystem {
                 System.out.println("Not enough tickets");
               } else {
                 user.addCredit(-total, true);
-                AvailableTickets.sellTicket(e, quantity);
+                AvailableTickets.sellTicket(e, quantity, user.getUsername());
               }
             }
           } 

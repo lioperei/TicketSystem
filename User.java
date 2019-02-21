@@ -82,6 +82,20 @@ public class User implements Commands {
     }
   }
 
+  @Override
+  public boolean equals(Object other){
+    if(other instanceof User){
+      User o = (User)  other;
+      if(this.username.equals(o.username) && this.userType.equals(o.userType)){
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   public boolean deductCredit(double amount) {
     if ((this.credit - amount) < 0) {
       this.credit -= amount;
