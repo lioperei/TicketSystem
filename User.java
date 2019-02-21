@@ -47,13 +47,17 @@ public class User implements Commands {
   }
 
   @Override
-  public ArrayList<User> buy(ArrayList<User> users) {
-    System.out.println("Invalid command");
-    return users;
+  public boolean buy(){
+    return false;
   }
 
   @Override
   public boolean refund() {
+    return false;
+  }
+
+  @Override
+  public boolean sell() {
     return false;
   }
 
@@ -90,4 +94,6 @@ public class User implements Commands {
   public String toString() {
     return this.username + " " + this.userType;
   }
+
+ 
 }

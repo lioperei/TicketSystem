@@ -11,7 +11,11 @@ public class TransactionFile{
   }
 
   public static void userTransactionLine(String code, String username, String userType, double amount){
-    transactionLines.add(code + String.format(" %1$-15s %2$s %3$012.2f", username, userType, amount));
+    transactionLines.add(String.format("%1$s %2$-15s %3$s %4$012.2f", code, username, userType, amount));
+  }
+
+  public static void refundTransactionLine(String buyer, String seller, double amount){
+    transactionLines.add(String.format("05 %1$-15s %2$-15s %3$012.2f", buyer, seller, amount));
   }
   
   public static User logout(User user) {

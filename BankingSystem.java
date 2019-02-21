@@ -9,6 +9,7 @@ public class BankingSystem {
     if (user == null) {
       System.out.println("Enter username");
       user = UserAccount.login(in.nextLine().toLowerCase());
+      AvailableTickets.login();
       if (user != null)
         inputMessage = user.getCommands();
       else
@@ -21,6 +22,7 @@ public class BankingSystem {
   public static void logout() {
     if (user != null) {
       user = UserAccount.logout(user);
+      AvailableTickets.logout();
       inputMessage = "Welcome to the Banking System";
     } else {
       System.out.println("Invalid");
@@ -89,6 +91,61 @@ public class BankingSystem {
     }
   }
 
+  private static void buy(){
+    if(user != null && user.buy()){
+      System.out.println("Enter Event title");
+      String title = in.nextLine();
+      System.out.println("Enter number of tickets for purchase");
+      int quantity = Integer.parseInt(in.nextLine());
+      System.out.println("Enter seller's username");
+      String seller = in.nextLine().toLowerCase();
+      Event e = AvailableTickets.getEvent(seller, title);
+      if(e != null){
+        double total = e.getPrice() * quantity; 
+        System.out.println(String.format("At $%1$.2f per ticket the total is $%2$.2f",
+        e.getPrice(), total));
+        Boolean confirm = false;
+        String answer;
+        while(!confirm){
+          System.out.println("Confirm purchase: Yes/No");
+          answer = in.nextLine().toLowerCase();
+          if(answer.equals("no")){
+            return;
+          } else if (answer.equals("yes")){
+            if(user.getCredit() < total){
+              System.out.println("Not enough credit");
+            } else {
+              if(e.getQuantity() < quantity){
+                System.out.println("Not enough tickets");
+              } else {
+                user.addCredit(-total, true);
+                AvailableTickets.sellTicket(e, quantity);
+              }
+            }
+          } 
+        }
+      } else {
+        System.out.println("Invalid event");  
+      }
+    } else {
+      System.out.println("Invalid command");
+    }
+  }
+
+  private static void sell(){
+    if(user != null && user.sell()){
+      System.out.println("Enter Event title");
+      String title = in.nextLine();
+      System.out.println("Enter ticket price");
+      double price = Double.parseDouble(in.nextLine());
+      System.out.println("Enter total ticket quantity");
+      int quantity = Integer.parseInt(in.nextLine());
+      AvailableTickets.addEvent(new Event(title, user.getUsername(), price, quantity));
+    } else {
+      System.out.println("Invalid command");
+    }
+  }
+
   public static void main(String args[]) {
     in = new Scanner(System.in, "UTF-8");
     inputMessage = "Welcome to the Banking System";
@@ -106,6 +163,12 @@ public class BankingSystem {
         break;
       case "delete":
         delete();
+        break;
+      case "buy":
+        buy();
+        break;
+      case "sell":
+        sell();
         break;
       case "refund":
         refund();

@@ -136,6 +136,7 @@ public class UserAccount {
       if(!buyer.addCredit(amount, true)){
         seller.addCredit(amount, true);
       } else {
+        TransactionFile.refundTransactionLine(buyerUsername, sellerUsername, amount);
         System.out.print("Successfull transfer");
       }
     } else {

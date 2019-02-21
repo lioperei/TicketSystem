@@ -13,4 +13,10 @@ public class SellStandard extends User {
   public boolean refund(){
     return true;
   }
+
+  @Override
+  public boolean sell(){
+    return true;
+  }
+
 }

@@ -20,6 +20,16 @@ public class Admin extends User {
   }
 
   @Override
+  public boolean buy(){
+    return true;
+  }
+
+  @Override
+  public boolean sell(){
+    return true;
+  }
+
+  @Override
   public boolean refund(){
     return true;
   }

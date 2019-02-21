@@ -9,4 +9,9 @@ public class BuyStandard extends User {
     return "Enter Command:\n\tBuy\n\tAdd Credit\n\tLogout";
   }
 
+  @Override
+  public boolean buy(){
+    return true;
+  }
+  
 }

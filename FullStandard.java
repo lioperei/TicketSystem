@@ -13,4 +13,15 @@ public class FullStandard extends User {
   public boolean refund(){
     return true;
   }
+
+  @Override
+  public boolean buy(){
+    return true;
+  }
+
+
+  @Override
+  public boolean sell(){
+    return true;
+  }
 }
