@@ -118,8 +118,8 @@ public class BankingSystem {
               if(e.getQuantity() < quantity){
                 System.out.println("Not enough tickets");
               } else {
-                user.addCredit(-total, true);
-                AvailableTickets.sellTicket(e, quantity, user.getUsername());
+                UserAccount.addCredit(user.getUsername(), -total);
+                AvailableTickets.sellTicket(e, quantity);
               }
             }
           } 

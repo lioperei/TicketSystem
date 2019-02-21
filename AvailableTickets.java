@@ -57,13 +57,11 @@ public class AvailableTickets {
     return null;
   }
 
-  public static void sellTicket(Event ev, int q, String username){
-    for (Event e : tickets) {
+  public static void sellTicket(Event ev, int q){
+  for (Event e : tickets) {
       if(e.equals(ev)){
         e.addQuantity(-q);
       }
     }
-    double total = q * ev.getPrice();
-    UserAccount.addCredit(username, -total);
   }
 }
