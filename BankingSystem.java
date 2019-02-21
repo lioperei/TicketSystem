@@ -110,16 +110,19 @@ public class BankingSystem {
           System.out.println("Confirm purchase: Yes/No");
           answer = in.nextLine().toLowerCase();
           if(answer.equals("no")){
-            return;
+            confirm = true;
           } else if (answer.equals("yes")){
             if(user.getCredit() < total){
               System.out.println("Not enough credit");
+              confirm = true;
             } else {
               if(e.getQuantity() < quantity){
                 System.out.println("Not enough tickets");
+                confirm = true;
               } else {
                 UserAccount.addCredit(user.getUsername(), -total);
                 AvailableTickets.sellTicket(e, quantity);
+                confirm = true;
               }
             }
           } 
