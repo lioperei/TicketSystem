@@ -1,3 +1,6 @@
+/**
+ * Interface for the commands that all users must implement
+ */
 public interface Commands {
   public boolean create();
   public boolean delete();

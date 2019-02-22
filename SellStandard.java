@@ -1,5 +1,10 @@
 public class SellStandard extends User {
 
+  /**
+   * Constructor for the SellStandard user
+   * @param username: Specified username for this user
+   * @param credit: Specified credit amount for this user
+   */
   public SellStandard(String username, double credit){
     super(username, "SS", credit);
   }

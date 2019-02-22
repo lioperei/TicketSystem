@@ -5,6 +5,9 @@ public class BankingSystem {
   private static String inputMessage;
   private static Scanner in;
 
+  /**
+   * Login command the initializes the user and available tickets
+   */
   private static void login() {
     if (user == null) {
       System.out.println("Enter username");
@@ -19,6 +22,9 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Logs the user out of the system
+   */
   public static void logout() {
     if (user != null) {
       user = UserAccount.logout(user);
@@ -29,11 +35,13 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Handles the user create function
+   */
   private static void create() {
-    String desiredUserType;
-    String desiredUsername;
-
     if (user != null && user.create()) {
+      String desiredUserType;
+      String desiredUsername;
       System.out.println("Enter Desired username (less than 16 characters) ");
       desiredUsername = in.nextLine().toLowerCase();
       if (desiredUsername.length() > 15)
@@ -47,6 +55,9 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Handles the user delete function
+   */
   private static void delete() {
     if (user != null && user.delete()) {
       System.out.println("Enter Desired username (less than 16 characters) ");
@@ -62,6 +73,9 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Handles the user refund function
+   */
   private static void refund(){
     if (user != null && user.refund()){
       System.out.println("Enter buyer username");
@@ -76,6 +90,9 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Handles the user addcredit function
+   */
   private static void addCredit() {
     if (user != null) {
       System.out.println("Enter amount to add. Limit $1000 per session");
@@ -91,6 +108,9 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Handles the user buy function
+   */
   private static void buy(){
     if(user != null && user.buy()){
       System.out.println("Enter Event title");
@@ -136,14 +156,29 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * Handles the user sell function
+   */
   private static void sell(){
     if(user != null && user.sell()){
-      System.out.println("Enter Event title");
+      System.out.println("Enter Event title less than 15 characters");
       String title = in.nextLine();
-      System.out.println("Enter ticket price");
+      if( title.length() > 15){
+        System.out.println("Invalid Title");
+        return;
+      }
+      System.out.println("Enter ticket price less than $1000");
       double price = Double.parseDouble(in.nextLine());
-      System.out.println("Enter total ticket quantity");
+      if(price > 1000 || price <= 0){
+        System.out.println("Invalid Ticket price");
+        return;
+      }
+      System.out.println("Enter total ticket quantity less than 100");
       int quantity = Integer.parseInt(in.nextLine());
+      if(quantity > 101 || quantity <= 0){
+        System.out.println("Invalid Ticket quantity");
+        return;
+      }
       Event ev = new Event(title, user.getUsername(), price, quantity);
       AvailableTickets.addEvent(ev);
       TransactionFile.sellerTransactionLine(ev);
@@ -152,39 +187,48 @@ public class BankingSystem {
     }
   }
 
+  /**
+   * The main execution of the banking system
+   */
   public static void main(String args[]) {
     in = new Scanner(System.in, "UTF-8");
     inputMessage = "Welcome to the Banking System";
     while (true) {
       System.out.println(inputMessage);
-      switch (in.nextLine().toLowerCase()) {
-      case "login":
-        login();
-        break;
-      case "logout":
-        logout();
-        break;
-      case "create":
-        create();
-        break;
-      case "delete":
-        delete();
-        break;
-      case "buy":
-        buy();
-        break;
-      case "sell":
-        sell();
-        break;
-      case "refund":
-        refund();
-        break;
-      case "add credit":
-        addCredit();
-        break;
-      default:
-        System.out.println("Invalid Command");
-        break;
+      try{
+        switch (in.nextLine().toLowerCase()) {
+        case "login":
+          login();
+          break;
+        case "logout":
+          logout();
+          break;
+        case "create":
+          create();
+          break;
+        case "delete":
+          delete();
+          break;
+        case "buy":
+          buy();
+          break;
+        case "sell":
+          sell();
+          break;
+        case "refund":
+          refund();
+          break;
+        case "add credit":
+          addCredit();
+          break;
+        default:
+          System.out.println("Invalid Command");
+          break;
+        }
+      } catch(IllegalArgumentException e){
+        if(e != null){
+          System.out.println("Invalid parameter passed. Please try again");
+        }
       }
     }
   }

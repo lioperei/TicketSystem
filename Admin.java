@@ -1,5 +1,11 @@
+
 public class Admin extends User {
 
+  /**
+   * Constructor for the Admin class
+   * @param username: Username of this admin
+   * @param credit: Credit value of this admin
+   */
   public Admin(String username, double credit){
     super(username, "AA", credit);
   }

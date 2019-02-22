@@ -1,5 +1,10 @@
 public class FullStandard extends User {
 
+  /**
+   * Constructor for the full standard user
+   * @param username: Specified username
+   * @param credit: Specified credit amount
+   */
   public FullStandard(String username, double credit){
     super(username, "FS", credit);
   }

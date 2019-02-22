@@ -14,6 +14,11 @@ public class UserAccount {
   private static ArrayList<User> users = new ArrayList<>();
   private static String userAccountsFile = "user_account.txt";
 
+  /**
+   * Attempts to retrieve the user via username 
+   * @param username
+   * @return: User is found null otherwise
+   */
   public static User login(String username) {
 
     BufferedReader br;
@@ -54,6 +59,11 @@ public class UserAccount {
     return (found != null) ? found : null;
   }
 
+  /**
+   * Logs the user out of the system and writes all users to the useraccounts file
+   * @param user
+   * @return: User is unsuccessful, null otherwise
+   */
   public static User logout(User user) {
     PrintWriter out;
     try {
@@ -73,12 +83,16 @@ public class UserAccount {
     return null;
   }
 
+  /**
+   * Creates a user and adds logs the transaction
+   * @param desiredUsername
+   * @param desiredUserType
+   */
   public static void create(String desiredUsername, String desiredUserType) {
-    for (User u : users) {
-      if (u.getUsername().equals(desiredUsername)) {
-        System.out.println("Username already taken");
-        return;
-      }
+    User u = getUser(desiredUsername);
+    if(u != null){
+      System.out.println("User already exists");
+      return;
     }
 
     try {
@@ -111,16 +125,24 @@ public class UserAccount {
 
   }
 
+   /**
+    * Add credit the the specified user
+    * @param username: Username to add credit to
+    * @param amount: Amount of credit to add
+    */
   public static void addCredit(String username, double amount){
-    for (User u : users) {
-      if(u.getUsername().equals(username)){
-        u.addCredit(amount, false);
-        return;
-      }
+    User u = getUser(username);
+    if(u != null){
+      u.addCredit(amount, false);
     }
-    System.out.println("Invalid username");
   }
 
+  /**
+   * Updates the seller and buyer to reflect the refund
+   * @param buyerUsername: Username of buyer
+   * @param sellerUsername: Username of seller
+   * @param amount: Amount to refund
+   */
   public static void refund(String buyerUsername, String sellerUsername, double amount){
     User buyer = getUser(buyerUsername);
     if( buyer == null ){
@@ -145,6 +167,10 @@ public class UserAccount {
 
   }
 
+  /**
+   * Deletes the specified user from the user account file
+   * @param username: Username to delete
+   */
   public static void delete(String username){
     User u = getUser(username);
     if(users.remove(u)){
@@ -155,6 +181,11 @@ public class UserAccount {
     }
   }
 
+  /**
+   * Returns the user specified by username
+   * @param username: Username to search for
+   * @return: The user if found, null otherwise
+   */
   private static User getUser(String username){
     for (User u : users) {
       if(u.getUsername().equals(username)){

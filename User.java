@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class User implements Commands {
   private final double MAX = 999999;
   private final double SESSION_MAX = 1000;
@@ -29,11 +27,11 @@ public class User implements Commands {
   }
 
   public String endSession() {
-    return String.format("00 %1$-15s %2$s %3$012.2f", this.username, this.userType, this.credit);
+    return String.format("00 %1$-15s %2$s %3$09.2f", this.username, this.userType, this.credit);
   }
 
   public String getUserAccount() {
-    return String.format("%1$-15s %2$s %3$012.2f", this.username, this.userType, this.credit);
+    return String.format("%1$-15s %2$s %3$09.2f", this.username, this.userType, this.credit);
   }
 
   @Override

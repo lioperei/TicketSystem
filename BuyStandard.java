@@ -1,5 +1,9 @@
 public class BuyStandard extends User {
-
+  /**
+   * Constructor for the BuyStandard user
+   * @param username: Specified username
+   * @param credit: Specificed credit
+   */
   public BuyStandard(String username, double credit){
     super(username, "BS", credit);
   }
