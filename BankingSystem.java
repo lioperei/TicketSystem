@@ -122,6 +122,7 @@ public class BankingSystem {
               } else {
                 UserAccount.addCredit(user.getUsername(), -total);
                 AvailableTickets.sellTicket(e, quantity);
+                TransactionFile.buyTransactionLine(e);
                 confirm = true;
               }
             }
@@ -143,7 +144,9 @@ public class BankingSystem {
       double price = Double.parseDouble(in.nextLine());
       System.out.println("Enter total ticket quantity");
       int quantity = Integer.parseInt(in.nextLine());
-      AvailableTickets.addEvent(new Event(title, user.getUsername(), price, quantity));
+      Event ev = new Event(title, user.getUsername(), price, quantity);
+      AvailableTickets.addEvent(ev);
+      TransactionFile.sellerTransactionLine(ev);
     } else {
       System.out.println("Invalid command");
     }
