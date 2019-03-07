@@ -1,0 +1,12 @@
+Welcome to the Banking System
+Enter username
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+Logged out
+Welcome to the Banking System

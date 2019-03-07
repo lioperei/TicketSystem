@@ -2,22 +2,28 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class AvailableTickets {
-  private static String ticketsFile = "available_tickets.txt";
-  private static ArrayList<Event> tickets = new ArrayList<>();
+  private String ticketsFile;
+  private ArrayList<Event> tickets;
   
   private static final int NAME = 18;
   private static final int SELLER = 34;
   private static final int QUANTITY = 37;
   private static final int PRICE = 38;
 
+  public AvailableTickets(String ticketsFile){
+    this.ticketsFile = ticketsFile;
+    tickets  = new ArrayList<>();
+  }
+
+
   /**
    * Initializes the available tickets and returns a sucess status
    * @return Success status
    */
-  public static boolean login(){
+  public boolean login(){
     BufferedReader br;
     try {
-      br = new BufferedReader(new InputStreamReader(new FileInputStream(ticketsFile)));
+      br = new BufferedReader(new InputStreamReader(new FileInputStream(this.ticketsFile)));
       String event, name, seller;
       int quantity;
       double price;
@@ -26,7 +32,7 @@ public class AvailableTickets {
         seller = event.substring(NAME + 1, SELLER);
         quantity = Integer.parseInt(event.substring(SELLER + 1, QUANTITY));
         price = Double.parseDouble(event.substring(PRICE));
-        tickets.add(new Event(name, seller, price, quantity));
+        this.tickets.add(new Event(name, seller, price, quantity));
       }
       br.close();
     } catch (IOException e) {
@@ -39,10 +45,10 @@ public class AvailableTickets {
   /**
    * Saves the available tickets file
    */
-  public static void logout() {
+  public void logout() {
     PrintWriter out;
     try {
-      out = new PrintWriter(new BufferedWriter(new FileWriter(ticketsFile, false)));
+      out = new PrintWriter(new BufferedWriter(new FileWriter(this.ticketsFile, false)));
     } catch (IOException e) {
       System.out.println("Error logging out");
       return;
@@ -59,8 +65,8 @@ public class AvailableTickets {
    * Adds the events to the list of tickets
    * @param e: Event to be added
    */
-  public static void addEvent(Event e){
-    tickets.add(e);
+  public void addEvent(Event e){
+    this.tickets.add(e);
   }
 
   /**
@@ -69,7 +75,7 @@ public class AvailableTickets {
    * @param title: title of event
    * @return: Event is found, null if not
    */
-  public static Event getEvent(String sellername, String title){
+  public Event getEvent(String sellername, String title){
     for (Event e : tickets) {
       if(e.getName().equals(title) && e.getSeller().equals(sellername)){
         return e;
@@ -83,7 +89,7 @@ public class AvailableTickets {
    * @param ev: Event to be decreased
    * @param q: quantity to be decreases
    */
-  public static void sellTicket(Event ev, int q){
+  public void sellTicket(Event ev, int q){
   for (Event e : tickets) {
       if(e.equals(ev)){
         e.sell(q);

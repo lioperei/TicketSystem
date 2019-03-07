@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
-public class BankingSystem {
+public class TicketSystem {
   private static User user;
+  private static UserAccount UA;
+  private static AvailableTickets AT;
   private static String inputMessage;
   private static Scanner in;
 
@@ -11,8 +13,8 @@ public class BankingSystem {
   private static void login() {
     if (user == null) {
       System.out.println("Enter username");
-      user = UserAccount.login(in.nextLine().toLowerCase());
-      AvailableTickets.login();
+      user = UA.login(in.nextLine().toLowerCase().replaceAll("^\\s+", ""));
+      AT.login();
       if (user != null)
         inputMessage = user.getCommands();
       else
@@ -27,8 +29,8 @@ public class BankingSystem {
    */
   public static void logout() {
     if (user != null) {
-      user = UserAccount.logout(user);
-      AvailableTickets.logout();
+      user = UA.logout(user);
+      AT.logout();
       inputMessage = "Welcome to the Banking System";
     } else {
       System.out.println("Invalid");
@@ -43,13 +45,13 @@ public class BankingSystem {
       String desiredUserType;
       String desiredUsername;
       System.out.println("Enter Desired username (less than 16 characters) ");
-      desiredUsername = in.nextLine().toLowerCase();
+      desiredUsername = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
       if (desiredUsername.length() > 15)
         System.out.println("Error: must be less than 16 characters");
       else
         System.out.println("Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard");
-      desiredUserType = in.nextLine().toUpperCase();
-      UserAccount.create(desiredUsername, desiredUserType);
+      desiredUserType = in.nextLine().toUpperCase().replaceAll("^\\s+", "");
+      UA.create(desiredUsername, desiredUserType);
     } else {
       System.out.println("Invalid command");
     }
@@ -61,13 +63,13 @@ public class BankingSystem {
   private static void delete() {
     if (user != null && user.delete()) {
       System.out.println("Enter Desired username (less than 16 characters) ");
-      String desiredUsername = in.nextLine().toLowerCase();
+      String desiredUsername = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
       if (desiredUsername.length() > 15)
         System.out.println("Error: must be less than 16 characters");
       else if (desiredUsername.equals(user.getUsername()))
         System.out.println("Cannot delete current user");
       else
-        UserAccount.delete(desiredUsername);
+        UA.delete(desiredUsername);
     } else {
       System.out.println("Invalid command");
     }
@@ -79,12 +81,12 @@ public class BankingSystem {
   private static void refund(){
     if (user != null && user.refund()){
       System.out.println("Enter buyer username");
-      String buyer = in.nextLine();
+      String buyer = in.nextLine().replaceAll("^\\s+", "");
       System.out.println("Enter seller username");
-      String seller = in.nextLine();
+      String seller = in.nextLine().replaceAll("^\\s+", "");
       System.out.println("Enter refund amount");
-      Double amount = Double.parseDouble(in.nextLine());
-      UserAccount.refund(buyer, seller, amount);
+      Double amount = Double.parseDouble(in.nextLine().replaceAll("^\\s+", ""));
+      UA.refund(buyer, seller, amount);
     } else {
       System.out.println("Invalid command");
     }
@@ -96,10 +98,10 @@ public class BankingSystem {
   private static void addCredit() {
     if (user != null) {
       System.out.println("Enter amount to add. Limit $1000 per session");
-      Double amount = Double.parseDouble(in.nextLine());
+      Double amount = Double.parseDouble(in.nextLine().replaceAll("^\\s+", ""));
       if (user.getUserType().equals("AA")) {
         System.out.println("Enter username");
-        UserAccount.addCredit(in.nextLine(), amount);
+        UA.addCredit(in.nextLine().replaceAll("^\\s+", ""), amount);
       } else {
         user.addCredit(amount, false);
       }
@@ -114,12 +116,12 @@ public class BankingSystem {
   private static void buy(){
     if(user != null && user.buy()){
       System.out.println("Enter Event title");
-      String title = in.nextLine();
+      String title = in.nextLine().replaceAll("^\\s+", "");
       System.out.println("Enter number of tickets for purchase");
-      int quantity = Integer.parseInt(in.nextLine());
+      int quantity = Integer.parseInt(in.nextLine().replaceAll("^\\s+", ""));
       System.out.println("Enter seller's username");
-      String seller = in.nextLine().toLowerCase();
-      Event e = AvailableTickets.getEvent(seller, title);
+      String seller = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+      Event e = AT.getEvent(seller, title);
       if(e != null){
         double total = e.getPrice() * quantity; 
         System.out.println(String.format("At $%1$.2f per ticket the total is $%2$.2f",
@@ -128,7 +130,7 @@ public class BankingSystem {
         String answer;
         while(!confirm){
           System.out.println("Confirm purchase: Yes/No");
-          answer = in.nextLine().toLowerCase();
+          answer = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
           if(answer.equals("no")){
             confirm = true;
           } else if (answer.equals("yes")){
@@ -140,8 +142,8 @@ public class BankingSystem {
                 System.out.println("Not enough tickets");
                 confirm = true;
               } else {
-                UserAccount.addCredit(user.getUsername(), -total);
-                AvailableTickets.sellTicket(e, quantity);
+                UA.addCredit(user.getUsername(), -total);
+                AT.sellTicket(e, quantity);
                 TransactionFile.buyTransactionLine(e);
                 confirm = true;
               }
@@ -162,25 +164,25 @@ public class BankingSystem {
   private static void sell(){
     if(user != null && user.sell()){
       System.out.println("Enter Event title less than 15 characters");
-      String title = in.nextLine();
+      String title = in.nextLine().replaceAll("^\\s+", "");
       if( title.length() > 15){
         System.out.println("Invalid Title");
         return;
       }
       System.out.println("Enter ticket price less than $1000");
-      double price = Double.parseDouble(in.nextLine());
+      double price = Double.parseDouble(in.nextLine().replaceAll("^\\s+", ""));
       if(price > 1000 || price <= 0){
         System.out.println("Invalid Ticket price");
         return;
       }
       System.out.println("Enter total ticket quantity less than 100");
-      int quantity = Integer.parseInt(in.nextLine());
+      int quantity = Integer.parseInt(in.nextLine().replaceAll("^\\s+", ""));
       if(quantity > 101 || quantity <= 0){
         System.out.println("Invalid Ticket quantity");
         return;
       }
       Event ev = new Event(title, user.getUsername(), price, quantity);
-      AvailableTickets.addEvent(ev);
+      AT.addEvent(ev);
       TransactionFile.sellerTransactionLine(ev);
     } else {
       System.out.println("Invalid command");
@@ -193,10 +195,13 @@ public class BankingSystem {
   public static void main(String args[]) {
     in = new Scanner(System.in, "UTF-8");
     inputMessage = "Welcome to the Banking System";
+    UA = new UserAccount(args[0]);
+    AT = new AvailableTickets(args[1]);
     while (true) {
       System.out.println(inputMessage);
       try{
-        switch (in.nextLine().toLowerCase()) {
+        String x = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+        switch (x) {
         case "login":
           login();
           break;
@@ -221,7 +226,11 @@ public class BankingSystem {
         case "add credit":
           addCredit();
           break;
+        case "exit":
+          System.exit(0);
+          break;
         default:
+          System.out.println(x);
           System.out.println("Invalid Command");
           break;
         }
