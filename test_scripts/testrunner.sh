@@ -6,6 +6,7 @@ for command in input/*; do
     output="${testcase/input/output}"
     readarray arg < $testcase/input.txt
     printf "${arg[*]}" | java TicketSystem $testcase/user_account.txt $testcase/available_tickets.txt > $output/output.txt
+    echo "$testcase run"
   done
 done
 
