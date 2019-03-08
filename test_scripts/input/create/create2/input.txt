@@ -1,0 +1,15 @@
+login
+Enter username
+admin
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+create
+Enter Desired username (less than 16 characters) 
+hhhhhhhhhhhhhhhhhhhhhhhhhh
+Error: must be less than 16 characters
