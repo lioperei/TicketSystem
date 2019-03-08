@@ -1,0 +1,28 @@
+Welcome to the Banking System
+login
+Enter username
+admin
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+refund
+Enter buyer username
+invalid
+Enter seller username
+invalid
+Enter refund amount
+0
+Invalid Buyer
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
