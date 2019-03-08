@@ -1,0 +1,5 @@
+login
+bob
+sell
+thiseventtitleismorethantwentyfivecharacterslong
+exit
