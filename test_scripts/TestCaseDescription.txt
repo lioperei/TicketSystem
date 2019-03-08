@@ -32,3 +32,21 @@ refund5: Transfers specified amount
 refund6: Transaction is saved into daily transaction file 
 
 buy1: System asks for buyer, seller, event, and quantity 
+buy2: Asks for number of tickets
+buy3: Asks for sellers’ username
+buy4: Display the cost per ticket and total cost to the user
+buy5: Ask for confirmation in the form of yes or no
+buy6: Check if number of tickets are subtracted from sellers’ inventory
+buy7: Check if information was saved to daily transaction file
+buy8: Transaction failed if title is not current title
+buy9: Transaction failed if seller doesn’t have enough tickets
+buy10: Transaction failed if buyer tries to buy more than 4 tickets
+
+addcredit1: As an admin, user and amount are asked for
+addcredit2: As a standard user, only amount is asked for
+addcredit3: Admin transaction fails when an invalid buyer username is inputted
+addcredit4: Admin Up to $1000 digits allowed for credit amount
+addcredit5: Standard user Up to $1000 allowed for credit amount
+addcredit6: Correct amount of credit added to correct user
+addcredit7: Maximum of $1000.00 can be added to an account per session
+addcredit8: Up to 999999 allowed for credit amount for users
