@@ -12,10 +12,9 @@ Enter Command:
 	Logout
 create
 Enter Desired username (less than 16 characters) 
-bob
+person
 Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard
 AA
-User already exists
 Enter Command:
 	Create
 	Delete
