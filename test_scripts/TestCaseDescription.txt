@@ -1,5 +1,16 @@
-login1: Tests if a user can login to the program
+login1: Tests if a user from the user_accounts.txt file can login to the program
+login2: Tests if invalid user cannot login
+login3: Tests admin login shows all commands
+login4: Tests that non-admin users do not have all commands
+login5: Tests that user may not login again if already logged in
+login6: Tests that login accepts further login requests after unsuccessful login
+
 create1: Tests whether the system asks for the username and usertype
 create2: Tests if system rejects a username greater than 16 characters
 create3: Tests if username is already in use
-delete1: Tests if username can be deleted
+create4: Tests if username writes into user_accounts.txt
+
+delete1: Tests if delete command deletes username
+delete2: Tests if delete is rejected upon entering the current username
+delete3: Tests if non-admin users cannot delete usernames
+delete4: Writes to transaction file upon successful deletion of username
