@@ -2,5 +2,3 @@ admin           AA 000100.00
 bob             FS 000005.00
 jane            BS 000005.00
 END
-hema            EXIT 000000000.00
-hema            EXIT 000000000.00
