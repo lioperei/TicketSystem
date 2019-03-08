@@ -1,20 +1,26 @@
-login1: Tests if a user from the user_accounts.txt file can login to the program
-login2: Tests if invalid user cannot login
-login3: Tests admin login shows all commands
+login1: if a user from the user_accounts.txt file can login to the program
+login2: if invalid user cannot login
+login3: admin login shows all commands
 login4: Tests that non-admin users do not have all commands
 login5: Tests that user may not login again if already logged in
-login6: Tests that login accepts further login requests after unsuccessful login
+login6: login accepts further login requests after unsuccessful login
 
 logout1: reject logout without successful login
 logout2: logout is accepted on successful login
 logout3: Logout writes a current transaction file on logout 
 
-create1: Tests whether the system asks for the username and usertype
-create2: Tests if system rejects a username greater than 16 characters
-create3: Tests if username is already in use
-create4: Tests if username writes into user_accounts.txt
+create1: system asks for the username and usertype
+create2: system rejects a username greater than 16 characters
+create3: username is already in use
+create4: username writes into user_accounts.txt
 
 delete1: Tests if delete command deletes username
 delete2: Tests if delete is rejected upon entering the current username
 delete3: Tests if non-admin users cannot delete usernames
 delete4: Writes to transaction file upon successful deletion of username
+
+sell1: Ask for event title, price, and quantity
+sell2: Rejected if ticket price is more than 1000
+sell3: Rejected if event title is more than 25 characters
+sell4: Fail if number of tickets greater than 100
+sell5: Ticket Information is saved into transaction file+avaliable_tickets.txt
