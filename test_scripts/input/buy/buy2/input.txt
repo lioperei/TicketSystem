@@ -1,6 +1,0 @@
-login
-bob
-buy
-*event title*
-*number of tickets*
-exit
