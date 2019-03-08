@@ -1,8 +1,0 @@
-login
-bob
-buy
-veld
-3
-jane
-yes
-exit
