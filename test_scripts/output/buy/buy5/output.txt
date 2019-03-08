@@ -1,0 +1,3 @@
+Welcome to the Banking System
+Enter username
+*number of tickets*

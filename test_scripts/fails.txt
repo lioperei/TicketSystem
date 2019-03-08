@@ -1,0 +1,118 @@
+input/addCredit/addcredit1 running
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.util.Scanner.nextLine(Scanner.java:1540)
+	at TicketSystem.getInput(TicketSystem.java:203)
+	at TicketSystem.main(TicketSystem.java:223)
+input/addCredit/addcredit1 ran
+input/addCredit/addcredit2 running
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.util.Scanner.nextLine(Scanner.java:1540)
+	at TicketSystem.getInput(TicketSystem.java:203)
+	at TicketSystem.main(TicketSystem.java:223)
+input/addCredit/addcredit2 ran
+input/buy/buy1 running
+input/buy/buy1 ran
+input/buy/buy10 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 18
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:32)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy10 ran
+./testrunner.sh: line 7: input/buy/buy2/input.txt: No such file or directory
+input/buy/buy2 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 34
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:33)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy2 ran
+input/buy/buy3 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 34
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:33)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy3 ran
+input/buy/buy4 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 34
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:33)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy4 ran
+input/buy/buy5 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 34
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:33)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy5 ran
+input/buy/buy6 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 34
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:33)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy6 ran
+input/buy/buy8 running
+input/buy/buy8 ran
+input/buy/buy9 running
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 34
+	at java.lang.String.substring(String.java:1963)
+	at AvailableTickets.login(AvailableTickets.java:33)
+	at TicketSystem.login(TicketSystem.java:18)
+	at TicketSystem.main(TicketSystem.java:226)
+input/buy/buy9 ran
+input/create/create1 running
+input/create/create1 ran
+input/create/create2 running
+input/create/create2 ran
+input/create/create3 running
+input/create/create3 ran
+input/create/create4 running
+input/create/create4 ran
+input/delete/delete1 running
+input/delete/delete1 ran
+input/delete/delete2 running
+input/delete/delete2 ran
+input/delete/delete3 running
+input/delete/delete3 ran
+input/delete/delete4 running
+input/delete/delete4 ran
+input/login/login1 running
+input/login/login1 ran
+input/login/login2 running
+input/login/login2 ran
+input/login/login3 running
+input/login/login3 ran
+input/login/login4 running
+input/login/login4 ran
+input/login/login5 running
+input/login/login5 ran
+input/login/login6 running
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.util.Scanner.nextLine(Scanner.java:1540)
+	at TicketSystem.getInput(TicketSystem.java:203)
+	at TicketSystem.main(TicketSystem.java:223)
+input/login/login6 ran
+input/logout/logout1 running
+input/logout/logout1 ran
+input/logout/logout2 running
+input/logout/logout2 ran
+input/logout/logout3 running
+input/logout/logout3 ran
+input/refund/refund1 running
+input/refund/refund1 ran
+input/refund/refund2 running
+input/refund/refund2 ran
+input/sell/sell1 running
+input/sell/sell1 ran
+input/sell/sell2 running
+input/sell/sell2 ran
+input/sell/sell3 running
+input/sell/sell3 ran
+input/sell/sell4 running
+input/sell/sell4 ran
+input/sell/sell5 running
+input/sell/sell5 ran

@@ -1,20 +1,11 @@
 Welcome to the Banking System
 Enter username
-xxx                 bob           050 050.00
-Enter Command:
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout
+xxx                  bob            050 050.00
+Invalid parameter passed. Please try again
+Welcome to the Banking System
 Enter Event title less than 15 characters
 Enter ticket price less than $1000
 Enter total ticket quantity less than 100
-Enter Command:
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout
+Welcome to the Banking System
 Logged out
 Welcome to the Banking System

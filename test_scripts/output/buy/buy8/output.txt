@@ -1,0 +1,10 @@
+Welcome to the Banking System
+Enter username
+Enter Command:
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+Enter Event title
+Enter number of tickets for purchase
