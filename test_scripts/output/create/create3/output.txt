@@ -1,3 +1,4 @@
+Welcome to the Banking System
 login
 Enter username
 admin
@@ -11,5 +12,7 @@ Enter Command:
 	Logout
 create
 Enter Desired username (less than 16 characters) 
-hhhhhhhhhhhhhhhhhhhhhhhhhh
-Error: must be less than 16 characters
+hema
+Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard
+AA
+User already exists
