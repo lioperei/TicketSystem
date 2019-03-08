@@ -1,0 +1,8 @@
+login
+bob
+sell
+xxx
+50
+50
+logout
+exit
