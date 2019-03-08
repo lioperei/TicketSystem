@@ -3,4 +3,4 @@ admin
 create
 person
 AA
-
+exit

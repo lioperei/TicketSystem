@@ -1,7 +1,5 @@
 Welcome to the Banking System
-login
 Enter username
-admin
 Enter Command:
 	Create
 	Delete

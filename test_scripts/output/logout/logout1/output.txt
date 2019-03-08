@@ -1,4 +1,3 @@
 Welcome to the Banking System
-logout
 Invalid
 Welcome to the Banking System

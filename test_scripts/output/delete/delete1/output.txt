@@ -1,24 +1,10 @@
 Welcome to the Banking System
-login
 Enter username
-admin
-Enter Command:
-	Create
-	Delete
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout
-delete
-Enter Desired username (less than 16 characters) 
+Login Error. Try again
+Invalid user
+Welcome to the Banking System
+Invalid command
+Welcome to the Banking System
 bob
-Deleted bob
-Enter Command:
-	Create
-	Delete
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout
+Invalid Command
+Welcome to the Banking System

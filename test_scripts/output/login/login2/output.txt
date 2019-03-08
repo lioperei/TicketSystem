@@ -1,10 +1,4 @@
 Welcome to the Banking System
-login
 Enter username
-random
-Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 18
-	at java.lang.String.substring(String.java:1963)
-	at AvailableTickets.login(AvailableTickets.java:31)
-	at TicketSystem.login(TicketSystem.java:17)
-	at TicketSystem.main(TicketSystem.java:206)
- 
+Invalid user
+Welcome to the Banking System

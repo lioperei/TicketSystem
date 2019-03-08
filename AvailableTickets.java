@@ -28,6 +28,7 @@ public class AvailableTickets {
       int quantity;
       double price;
       while (!(event = br.readLine()).equals("END")) {
+        System.out.println(event);
         name = event.substring(0, NAME);
         seller = event.substring(NAME + 1, SELLER);
         quantity = Integer.parseInt(event.substring(SELLER + 1, QUANTITY));

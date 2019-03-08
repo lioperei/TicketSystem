@@ -1,14 +1,11 @@
 Welcome to the Banking System
-login
 Enter username
-bob
 Enter Command:
 	Buy
 	Sell
 	Refund
 	Add Credit
 	Logout
-delete
 Invalid command
 Enter Command:
 	Buy

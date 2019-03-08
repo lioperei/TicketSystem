@@ -13,7 +13,7 @@ public class TicketSystem {
   private static void login() {
     if (user == null) {
       System.out.println("Enter username");
-      user = UA.login(in.nextLine().toLowerCase().replaceAll("^\\s+", ""));
+      user = UA.login(getInput().toLowerCase().replaceAll("^\\s+", ""));
       AT.login();
       if (user != null)
         inputMessage = user.getCommands();
@@ -45,12 +45,17 @@ public class TicketSystem {
       String desiredUserType;
       String desiredUsername;
       System.out.println("Enter Desired username (less than 16 characters) ");
-      desiredUsername = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+      desiredUsername = getInput().toLowerCase().replaceAll("^\\s+", "");
       if (desiredUsername.length() > 15)
         System.out.println("Error: must be less than 16 characters");
       else
-        System.out.println("Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard");
-      desiredUserType = in.nextLine().toUpperCase().replaceAll("^\\s+", "");
+        if(UA.getUser(desiredUsername) != null) {
+          System.out.println("Username already exists");
+          return;
+        } else {
+          System.out.println("Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard");
+        }
+      desiredUserType = getInput().toUpperCase().replaceAll("^\\s+", "");
       UA.create(desiredUsername, desiredUserType);
     } else {
       System.out.println("Invalid command");
@@ -63,7 +68,7 @@ public class TicketSystem {
   private static void delete() {
     if (user != null && user.delete()) {
       System.out.println("Enter Desired username (less than 16 characters) ");
-      String desiredUsername = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+      String desiredUsername = getInput().toLowerCase().replaceAll("^\\s+", "");
       if (desiredUsername.length() > 15)
         System.out.println("Error: must be less than 16 characters");
       else if (desiredUsername.equals(user.getUsername()))
@@ -81,11 +86,11 @@ public class TicketSystem {
   private static void refund(){
     if (user != null && user.refund()){
       System.out.println("Enter buyer username");
-      String buyer = in.nextLine().replaceAll("^\\s+", "");
+      String buyer = getInput().replaceAll("^\\s+", "");
       System.out.println("Enter seller username");
-      String seller = in.nextLine().replaceAll("^\\s+", "");
+      String seller = getInput().replaceAll("^\\s+", "");
       System.out.println("Enter refund amount");
-      Double amount = Double.parseDouble(in.nextLine().replaceAll("^\\s+", ""));
+      Double amount = Double.parseDouble(getInput().replaceAll("^\\s+", ""));
       UA.refund(buyer, seller, amount);
     } else {
       System.out.println("Invalid command");
@@ -98,10 +103,10 @@ public class TicketSystem {
   private static void addCredit() {
     if (user != null) {
       System.out.println("Enter amount to add. Limit $1000 per session");
-      Double amount = Double.parseDouble(in.nextLine().replaceAll("^\\s+", ""));
+      Double amount = Double.parseDouble(getInput().replaceAll("^\\s+", ""));
       if (user.getUserType().equals("AA")) {
         System.out.println("Enter username");
-        UA.addCredit(in.nextLine().replaceAll("^\\s+", ""), amount);
+        UA.addCredit(getInput().replaceAll("^\\s+", ""), amount);
       } else {
         user.addCredit(amount, false);
       }
@@ -116,11 +121,11 @@ public class TicketSystem {
   private static void buy(){
     if(user != null && user.buy()){
       System.out.println("Enter Event title");
-      String title = in.nextLine().replaceAll("^\\s+", "");
+      String title = getInput().replaceAll("^\\s+", "");
       System.out.println("Enter number of tickets for purchase");
-      int quantity = Integer.parseInt(in.nextLine().replaceAll("^\\s+", ""));
+      int quantity = Integer.parseInt(getInput().replaceAll("^\\s+", ""));
       System.out.println("Enter seller's username");
-      String seller = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+      String seller = getInput().toLowerCase().replaceAll("^\\s+", "");
       Event e = AT.getEvent(seller, title);
       if(e != null){
         double total = e.getPrice() * quantity; 
@@ -130,7 +135,7 @@ public class TicketSystem {
         String answer;
         while(!confirm){
           System.out.println("Confirm purchase: Yes/No");
-          answer = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+          answer = getInput().toLowerCase().replaceAll("^\\s+", "");
           if(answer.equals("no")){
             confirm = true;
           } else if (answer.equals("yes")){
@@ -164,19 +169,19 @@ public class TicketSystem {
   private static void sell(){
     if(user != null && user.sell()){
       System.out.println("Enter Event title less than 15 characters");
-      String title = in.nextLine().replaceAll("^\\s+", "");
+      String title = getInput().replaceAll("^\\s+", "");
       if( title.length() > 15){
         System.out.println("Invalid Title");
         return;
       }
       System.out.println("Enter ticket price less than $1000");
-      double price = Double.parseDouble(in.nextLine().replaceAll("^\\s+", ""));
+      double price = Double.parseDouble(getInput().replaceAll("^\\s+", ""));
       if(price > 1000 || price <= 0){
         System.out.println("Invalid Ticket price");
         return;
       }
       System.out.println("Enter total ticket quantity less than 100");
-      int quantity = Integer.parseInt(in.nextLine().replaceAll("^\\s+", ""));
+      int quantity = Integer.parseInt(getInput().replaceAll("^\\s+", ""));
       if(quantity > 101 || quantity <= 0){
         System.out.println("Invalid Ticket quantity");
         return;
@@ -186,6 +191,16 @@ public class TicketSystem {
       TransactionFile.sellerTransactionLine(ev);
     } else {
       System.out.println("Invalid command");
+    }
+  }
+
+  public static String getInput(){
+    String input = in.nextLine();
+    if(input.equals("exit")){
+      System.exit(0);
+      return "";
+    } else {
+      return input;
     }
   }
 
@@ -200,7 +215,7 @@ public class TicketSystem {
     while (true) {
       System.out.println(inputMessage);
       try{
-        String x = in.nextLine().toLowerCase().replaceAll("^\\s+", "");
+        String x = getInput().toLowerCase().replaceAll("^\\s+", "");
         switch (x) {
         case "login":
           login();

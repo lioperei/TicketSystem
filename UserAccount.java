@@ -192,7 +192,7 @@ public class UserAccount {
    * @param username: Username to search for
    * @return: The user if found, null otherwise
    */
-  private User getUser(String username){
+  public User getUser(String username){
     for (User u : users) {
       if(u.getUsername().equals(username)){
         return u;

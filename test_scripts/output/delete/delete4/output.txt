@@ -1,7 +1,5 @@
 Welcome to the Banking System
-login
 Enter username
-admin
 Enter Command:
 	Create
 	Delete
@@ -10,10 +8,8 @@ Enter Command:
 	Refund
 	Add Credit
 	Logout
-delete
 Enter Desired username (less than 16 characters) 
-bob
-Deleted bob
+No such user
 Enter Command:
 	Create
 	Delete
@@ -22,6 +18,5 @@ Enter Command:
 	Refund
 	Add Credit
 	Logout
-logout
 Logged out
 Welcome to the Banking System
