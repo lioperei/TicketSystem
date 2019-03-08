@@ -1,0 +1,12 @@
+Welcome to the Banking System
+login
+Enter username
+bob
+Unable to read tickets
+Enter Command:
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+exit
