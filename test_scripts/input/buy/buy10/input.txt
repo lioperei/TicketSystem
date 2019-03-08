@@ -1,6 +1,6 @@
 login
 bob
 buy
-*event title*
+veld
 5
 exit
