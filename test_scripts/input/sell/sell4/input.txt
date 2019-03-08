@@ -1,0 +1,7 @@
+login
+bob
+sell
+xxx
+500
+10000
+exit
