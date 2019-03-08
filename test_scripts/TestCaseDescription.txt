@@ -24,3 +24,11 @@ sell2: Rejected if ticket price is more than 1000
 sell3: Rejected if event title is more than 25 characters
 sell4: Fail if number of tickets greater than 100
 sell5: Ticket Information is saved into transaction file+avaliable_tickets.txt
+
+refund1: Ask for username of buyer, seller, and amount
+refund2: Fails when invalid buyer and seller is inputted
+refund4: Fails when specified credit exceeds buyer credit
+refund5: Transfers specified amount
+refund6: Transaction is saved into daily transaction file 
+
+buy1: System asks for buyer, seller, event, and quantity 
