@@ -1,0 +1,24 @@
+Welcome to the Banking System
+login
+Enter username
+admin
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+delete
+Enter Desired username (less than 16 characters) 
+bob
+Deleted bob
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
