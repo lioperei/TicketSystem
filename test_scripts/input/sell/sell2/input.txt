@@ -1,0 +1,6 @@
+login
+admin
+sell
+xxx
+5000
+exit
