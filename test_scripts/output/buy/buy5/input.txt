@@ -1,0 +1,8 @@
+login
+bob
+buy
+*event title*
+*number of tickets*
+*sellers username*
+yes
+exit

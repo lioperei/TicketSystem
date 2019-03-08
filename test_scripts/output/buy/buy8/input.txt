@@ -1,0 +1,5 @@
+login
+bob
+buy
+*event title*
+exit

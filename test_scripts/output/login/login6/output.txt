@@ -1,13 +1,13 @@
 Welcome to the Banking System
-Enter username
-Invalid user
+admin           aa 000100.00
+Invalid Command
 Welcome to the Banking System
-Enter username
-Enter Command:
-	Create
-	Delete
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout
+bob             fs 000005.00
+Invalid Command
+Welcome to the Banking System
+jane            bs 000005.00
+Invalid Command
+Welcome to the Banking System
+end
+Invalid Command
+Welcome to the Banking System

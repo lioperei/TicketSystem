@@ -1,7 +1,6 @@
 Welcome to the Banking System
-login
 Enter username
-admin
+xxx                 bob           050 050.00
 Enter Command:
 	Create
 	Delete
@@ -10,19 +9,6 @@ Enter Command:
 	Refund
 	Add Credit
 	Logout
-refund
 Enter buyer username
-jane
 Enter seller username
-admin
 Enter refund amount
-exit
-Invalid parameter passed. Please try again
-Enter Command:
-	Create
-	Delete
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout

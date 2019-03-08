@@ -10,11 +10,3 @@ Enter Command:
 	Logout
 Enter Desired username (less than 16 characters) 
 Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard
-Enter Command:
-	Create
-	Delete
-	Buy
-	Sell
-	Refund
-	Add Credit
-	Logout

@@ -1,15 +1,20 @@
 Welcome to the Banking System
-login
 Enter username
-bob
 Enter Command:
-        Create
-        Delete
-        Buy
-        Sell
-        Refund
-        Add Credit
-        Logout
-add credit
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
 Enter amount to add. Limit $1000 per session
-100
+Enter username
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
