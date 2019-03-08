@@ -1,8 +1,8 @@
 login
 bob
 buy
-*event title*
-*number of tickets*
-*sellers username*
+veld
+3
+jane
 yes
 exit
