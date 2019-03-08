@@ -1,7 +1,23 @@
+Welcome to the Banking System
 login
+Enter username
 bob
+Enter Command:
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
 sell
+Enter Event title less than 15 characters
 xxx
+Enter ticket price less than $1000
 100
+Enter total ticket quantity less than 100
 50
-exit
+Enter Command:
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
