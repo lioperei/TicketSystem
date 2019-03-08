@@ -1,6 +1,0 @@
-login
-bob
-buy
-*event title*
-5
-exit
