@@ -2,5 +2,5 @@ login
 admin
 sell
 xxx
-5000
+10000
 exit
