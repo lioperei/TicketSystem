@@ -2,5 +2,6 @@ login
 bob
 buy
 event
+0
 admin
 exit
