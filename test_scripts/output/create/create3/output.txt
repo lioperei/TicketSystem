@@ -12,7 +12,7 @@ Enter Command:
 	Logout
 create
 Enter Desired username (less than 16 characters) 
-hema
+bob
 Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard
 AA
 User already exists
