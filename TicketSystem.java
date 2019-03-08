@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicketSystem {
@@ -48,15 +49,20 @@ public class TicketSystem {
       desiredUsername = getInput().toLowerCase().replaceAll("^\\s+", "");
       if (desiredUsername.length() > 15)
         System.out.println("Error: must be less than 16 characters");
-      else
-        if(UA.getUser(desiredUsername) != null) {
-          System.out.println("Username already exists");
-          return;
-        } else {
-          System.out.println("Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard");
-        }
+      else if (UA.getUser(desiredUsername) != null) {
+        System.out.println("Username already exists");
+        return;
+      } else {
+        System.out.println("Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard");
+      }
       desiredUserType = getInput().toUpperCase().replaceAll("^\\s+", "");
-      UA.create(desiredUsername, desiredUserType);
+      String[] types = { "AA", "FS", "BS", "SS" };
+      if (!Arrays.asList(types).contains(desiredUserType)) {
+        System.out.println("Invalid usertype");
+        return;
+      } else {
+        UA.create(desiredUsername, desiredUserType);
+      }
     } else {
       System.out.println("Invalid command");
     }
@@ -83,8 +89,8 @@ public class TicketSystem {
   /**
    * Handles the user refund function
    */
-  private static void refund(){
-    if (user != null && user.refund()){
+  private static void refund() {
+    if (user != null && user.refund()) {
       System.out.println("Enter buyer username");
       String buyer = getInput().replaceAll("^\\s+", "");
       System.out.println("Enter seller username");
@@ -118,8 +124,8 @@ public class TicketSystem {
   /**
    * Handles the user buy function
    */
-  private static void buy(){
-    if(user != null && user.buy()){
+  private static void buy() {
+    if (user != null && user.buy()) {
       System.out.println("Enter Event title");
       String title = getInput().replaceAll("^\\s+", "");
       System.out.println("Enter number of tickets for purchase");
@@ -127,23 +133,22 @@ public class TicketSystem {
       System.out.println("Enter seller's username");
       String seller = getInput().toLowerCase().replaceAll("^\\s+", "");
       Event e = AT.getEvent(seller, title);
-      if(e != null){
-        double total = e.getPrice() * quantity; 
-        System.out.println(String.format("At $%1$.2f per ticket the total is $%2$.2f",
-        e.getPrice(), total));
+      if (e != null) {
+        double total = e.getPrice() * quantity;
+        System.out.println(String.format("At $%1$.2f per ticket the total is $%2$.2f", e.getPrice(), total));
         Boolean confirm = false;
         String answer;
-        while(!confirm){
+        while (!confirm) {
           System.out.println("Confirm purchase: Yes/No");
           answer = getInput().toLowerCase().replaceAll("^\\s+", "");
-          if(answer.equals("no")){
+          if (answer.equals("no")) {
             confirm = true;
-          } else if (answer.equals("yes")){
-            if(user.getCredit() < total){
+          } else if (answer.equals("yes")) {
+            if (user.getCredit() < total) {
               System.out.println("Not enough credit");
               confirm = true;
             } else {
-              if(e.getQuantity() < quantity){
+              if (e.getQuantity() < quantity) {
                 System.out.println("Not enough tickets");
                 confirm = true;
               } else {
@@ -153,10 +158,10 @@ public class TicketSystem {
                 confirm = true;
               }
             }
-          } 
+          }
         }
       } else {
-        System.out.println("Invalid event");  
+        System.out.println("Invalid event");
       }
     } else {
       System.out.println("Invalid command");
@@ -166,23 +171,23 @@ public class TicketSystem {
   /**
    * Handles the user sell function
    */
-  private static void sell(){
-    if(user != null && user.sell()){
+  private static void sell() {
+    if (user != null && user.sell()) {
       System.out.println("Enter Event title less than 15 characters");
       String title = getInput().replaceAll("^\\s+", "");
-      if( title.length() > 15){
+      if (title.length() > 15) {
         System.out.println("Invalid Title");
         return;
       }
       System.out.println("Enter ticket price less than $1000");
       double price = Double.parseDouble(getInput().replaceAll("^\\s+", ""));
-      if(price > 1000 || price <= 0){
+      if (price > 1000 || price <= 0) {
         System.out.println("Invalid Ticket price");
         return;
       }
       System.out.println("Enter total ticket quantity less than 100");
       int quantity = Integer.parseInt(getInput().replaceAll("^\\s+", ""));
-      if(quantity > 101 || quantity <= 0){
+      if (quantity > 101 || quantity <= 0) {
         System.out.println("Invalid Ticket quantity");
         return;
       }
@@ -194,9 +199,9 @@ public class TicketSystem {
     }
   }
 
-  public static String getInput(){
-    String input = in.nextLine();
-    if(input.equals("exit")){
+  public static String getInput() {
+    String input = in.nextLine().replaceAll("^\\s+", "");
+    if (input.equals("exit")) {
       System.exit(0);
       return "";
     } else {
@@ -214,7 +219,7 @@ public class TicketSystem {
     AT = new AvailableTickets(args[1]);
     while (true) {
       System.out.println(inputMessage);
-      try{
+      try {
         String x = getInput().toLowerCase().replaceAll("^\\s+", "");
         switch (x) {
         case "login":
@@ -249,8 +254,8 @@ public class TicketSystem {
           System.out.println("Invalid Command");
           break;
         }
-      } catch(IllegalArgumentException e){
-        if(e != null){
+      } catch (IllegalArgumentException e) {
+        if (e != null) {
           System.out.println("Invalid parameter passed. Please try again");
         }
       }
