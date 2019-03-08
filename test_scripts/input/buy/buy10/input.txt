@@ -1,6 +1,0 @@
-login
-bob
-buy
-veld
-5
-exit
