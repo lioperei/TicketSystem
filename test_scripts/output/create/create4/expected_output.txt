@@ -1,0 +1,25 @@
+Welcome to the Banking System
+login
+Enter username
+admin
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout
+create
+Enter Desired username (less than 16 characters) 
+person
+Enter user Type: AA=admin, FS=full-standard, BS=buy-standard, SS=sell-standard
+AA
+Enter Command:
+	Create
+	Delete
+	Buy
+	Sell
+	Refund
+	Add Credit
+	Logout

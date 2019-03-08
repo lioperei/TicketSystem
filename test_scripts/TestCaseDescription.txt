@@ -1,0 +1,5 @@
+login1: Tests if a user can login to the program
+create1: Tests whether the system asks for the username and usertype
+create2: Tests if system rejects a username greater than 16 characters
+create3: Tests if username is already in use
+delete1: Tests if username can be deleted
