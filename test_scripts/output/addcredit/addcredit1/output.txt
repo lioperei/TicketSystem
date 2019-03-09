@@ -1,5 +1,7 @@
 Welcome to the Banking System
+login
 Enter username
+admin
 Enter Command:
 	Create
 	Delete
@@ -8,8 +10,11 @@ Enter Command:
 	Refund
 	Add Credit
 	Logout
+add credit
 Enter amount to add. Limit $1000 per session
+100
 Enter username
+bob
 Enter Command:
 	Create
 	Delete
