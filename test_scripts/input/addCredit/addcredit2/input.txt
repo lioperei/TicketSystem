@@ -1,5 +1,5 @@
 login
-admin
+jane
 add credit
 100 
-
+exit
